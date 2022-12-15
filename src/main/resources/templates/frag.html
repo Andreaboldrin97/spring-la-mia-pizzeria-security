@@ -38,10 +38,17 @@
 			        </li>
 			      </ul>
 			    </div>
+			    
 			    <form class="d-flex" action="search">
 			        <input class="form-control me-2" type="text" placeholder="Search" name="query" th:value="${query}">
 			        <button class="btn btn-outline-success" type="submit">Search</button>
-			      </form>
+			   </form>
+			   <div>
+			   		<a class="mx-2 btn btn-success" th:href="@{/login}">Login</a>
+			   </div>
+			    <div>
+			   		<a class="btn btn-danger" th:href="@{/logout}">Logout</a>
+			   </div>
 			  </div>
 			</nav>
 		</header>

@@ -63,9 +63,11 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner{
 		//user
 		User user1 = new User("user","{noop}user",user);
 		User admin1 = new User("admin","{noop}admin",admin);
+		User userAdmin1 = new User("useradmin", "{noop}useradmin", user, admin);
 		
 		userService.save(user1);
 		userService.save(admin1);
+		userService.save(userAdmin1);
 		
 		//promotions
 		Promotion prom1 = new  Promotion(LocalDate.parse("2022-12-13"), LocalDate.parse("2022-12-31"), "rebix promotion");
