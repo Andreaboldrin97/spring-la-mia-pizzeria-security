@@ -42,7 +42,7 @@ public class PromotionController {
 			}
 			
 		//CREATE PROMOTION
-			@GetMapping("/promotion/create")
+			@GetMapping("admin/promotion/create")
 			public String createPromotion(Model model) {
 				
 				Promotion promotion = new Promotion();
@@ -53,7 +53,7 @@ public class PromotionController {
 				
 				return "promotionCRUD/create";
 			}
-			@PostMapping("/promotion/store")
+			@PostMapping("admin/promotion/store")
 			public String storePromotion(@Valid @ModelAttribute("promotion") Promotion promotion,
 					//Intergaccia per la registrazione degli errori 
 					BindingResult bindingResult, 
@@ -68,7 +68,7 @@ public class PromotionController {
 				redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
 				
 				//ritorniamo al form con gli errori se i dati sono errati
-				return "/promotion/create";
+				return "admin/promotion/create";
 				
 				}
 				//metodo per otterere le pizze inserite

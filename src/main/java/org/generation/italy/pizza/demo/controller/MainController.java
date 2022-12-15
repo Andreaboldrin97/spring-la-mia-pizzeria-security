@@ -21,7 +21,7 @@ public class MainController {
 
 	//HOME
 	//Indichiamo a quale path fa riferimento questo metodo
-	@RequestMapping("/")
+	@GetMapping("/")
 	//indichiamo il metodo publico che ritornerà una Stringa
 						//indichiamo la presenza di un model per fornire attributi alla view ritornata
 	public String getHome(Model model) {

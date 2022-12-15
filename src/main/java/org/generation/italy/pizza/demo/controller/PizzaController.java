@@ -53,9 +53,21 @@ public class PizzaController {
 			return "pizzaCRUD/index";
 		}
 		
+		//metodo per ritornare la show del drink
+		@GetMapping("user/pizza/{id}")
+		public String getShowDrink(@PathVariable("id") int id, Model model) {
+				
+			// selezioniamo il record con quell'id
+			Optional<Pizza> optPizza = pizzaService.findPizzaByID(id);
+			Pizza pizza  = optPizza.get();
+			model.addAttribute("pizza", pizza);
+					
+			return "pizzaCRUD/show";
+		}
+		
 		//CREATE PIZZA
 		//Indichiamo a quale path fa riferimento questo metodo
-		@GetMapping("/pizza/create")
+		@GetMapping("/admin/pizza/create")
 		public String createPizza(Model model) {
 			
 			Pizza pizza = new Pizza();
@@ -70,7 +82,7 @@ public class PizzaController {
 			//a quale view fa riferimento
 			return "pizzaCRUD/create";
 		}
-		@PostMapping("/pizza/create")
+		@PostMapping("/admin/pizza/create")
 		public String storePizza(@Valid @ModelAttribute("pizza") Pizza pizza,
 				//Intergaccia per la registrazione degli errori 
 				BindingResult bindingResult, 
@@ -85,7 +97,7 @@ public class PizzaController {
 			redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
 			
 			//ritorniamo al form con gli errori se i dati sono errati
-			return "redirect:/pizza/create";
+			return "redirect:/admin/pizza/create";
 			
 			}
 			
@@ -98,7 +110,7 @@ public class PizzaController {
 		
 		//EDIT PIZZA
 		//Indichiamo a quale path fa riferimento questo metodo
-		@GetMapping("/pizza/edit/{id}")
+		@GetMapping("/admin/pizza/edit/{id}")
 		public String editPizza(@PathVariable("id") int id, Model model) {
 			
 			// selezioniamo il record con quell'id
@@ -116,7 +128,7 @@ public class PizzaController {
 			//a quale view fa riferimento
 			return "pizzaCRUD/update";
 		}
-		@PostMapping("/pizza/store")
+		@PostMapping("/admin/pizza/store")
 		public String updatePizza(@Valid @ModelAttribute("pizza") Pizza pizza,
 				//Intergaccia per la registrazione degli errori 
 				BindingResult bindingResult, 
@@ -131,7 +143,7 @@ public class PizzaController {
 			redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
 			
 			//ritorniamo al form con gli errori se i dati sono errati
-			return "redirect:/pizza/store";
+			return "redirect:/admin/pizza/store";
 			
 			}
 			//metodo per salvare un record
@@ -143,7 +155,7 @@ public class PizzaController {
 		
 		//DELETE PIZZA 
 		//Indichiamo a quale path fa riferimento questo metodo
-		@GetMapping("/pizza/delete/{id}")
+		@GetMapping("/admin/pizza/delete/{id}")
 		public String deletePizza(@PathVariable("id") int id) {
 			
 			// selezioniamo il record con quell'id

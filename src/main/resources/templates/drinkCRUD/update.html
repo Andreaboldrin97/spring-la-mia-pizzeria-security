@@ -20,7 +20,7 @@
 				[[${uniqueException}]]
 			</div>
 			<!-- form per la compilazione dei record -->
-			<form class="container border mt-5 p-3" method="POST" action="/drink/store" th:object="${drink}"  >
+			<form class="container border mt-5 p-3" method="POST" th:action="@{/admin/drink/store}" th:object="${drink}"  >
 				<input type="text" name="id" th:field="*{id}" class="d-none" >
 				<div th:insert="frag :: form-crud-drink"></div>
 			</form>

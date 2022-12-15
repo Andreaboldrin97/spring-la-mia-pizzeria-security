@@ -167,5 +167,16 @@
 			<input type="submit" value="save" class="btn btn-success">
 		</th:block>
 		
+		<th:block th:fragment="frag-show">
+			<div class="card" style="width: 18rem;">
+				 <img src="https://img.freepik.com/free-photo/gray-painted-background_53876-94041.jpg?w=2000" class="card-img-top" alt="...">
+				 <div class="card-body">
+				 	 <h5 class="card-title" th:text="*{name}"></h5>
+				 	 <h6 class="card-subtitle mb-2 text-muted" th:text="*{price}"></h6>
+				    <p class="card-text" th:text="*{description}"></p>
+				</div>
+			</div>
+		</th:block>
+
 	</body>
 </html>

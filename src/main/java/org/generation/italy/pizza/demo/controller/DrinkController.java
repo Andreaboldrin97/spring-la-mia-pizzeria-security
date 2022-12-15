@@ -37,8 +37,21 @@ public class DrinkController {
 		return "drinkCRUD/index";
 	}
 	
+	//metodo per ritornare la show del drink
+	@GetMapping("user/drink/{id}")
+	public String getShowDrink(@PathVariable("id") int id, Model model) {
+			
+		// selezioniamo il record con quell'id
+		Optional<Drink> optDrink= drinkService.findDrinkById(id);
+		Drink drink = optDrink.get();
+		//portiamo il record alla pagina in modo da indicare le collone che lo compongono
+		model.addAttribute("drink", drink);
+			
+		return "drinkCRUD/show";
+	}
+	
 	//metodo per creare un record
-	@GetMapping("/drink/create")
+	@GetMapping("admin/drink/create")
 	public String createDrink(Model model) {
 		
 		//creiamo un istanza del record da creare 
@@ -48,7 +61,7 @@ public class DrinkController {
 		//a quale view fa riferimento
 		return "drinkCRUD/create";
 	}
-	@PostMapping("/drink/create")              
+	@PostMapping("admin/drink/create")              
 	public String storeDrink(@Valid Drink drink,
 								//Intergaccia per la registrazione degli errori 
 								BindingResult bindingResult, 
@@ -63,7 +76,7 @@ public class DrinkController {
 			redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
 			
 			//ritorniamo al form con gli errori se i dati sono errati
-			return "redirect:/drink/create";
+			return "redirect:admin/drink/create";
 		}
 		
 		try {
@@ -74,7 +87,7 @@ public class DrinkController {
 			
 			//porto l'errore del duplicato in console
 			redirectAttributes.addFlashAttribute("uniqueException", e.getMessage() );
-			return "redirect:/drink/create";
+			return "redirect:admin/drink/create";
 		}
 		
 		//a quale view ritorna
@@ -82,7 +95,7 @@ public class DrinkController {
 	}
 	
 	//metodo per modificare un record
-	@GetMapping("/drink/edit/{id}")
+	@GetMapping("admin/drink/edit/{id}")
 	public String editDrink(@PathVariable("id") int id, Model model) {
 		
 		// selezioniamo il record con quell'id
@@ -93,7 +106,7 @@ public class DrinkController {
 		
 		return "drinkCRUD/update";
 	}
-	@PostMapping("/drink/store")
+	@PostMapping("admin/drink/store")
 	public String updateDrink(@Valid Drink drink,
 			//Intergaccia per la registrazione degli errori 
 			BindingResult bindingResult, 
@@ -108,7 +121,7 @@ public class DrinkController {
 		redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
 		
 		//ritorniamo al form con gli errori se i dati sono errati
-		return "redirect:/drink/store";
+		return "redirect:admin/drink/store";
 		}
 
 		try {
@@ -119,7 +132,7 @@ public class DrinkController {
 			
 			//porto l'errore del duplicato in console
 			redirectAttributes.addFlashAttribute("uniqueException", e.getMessage() );
-			return "redirect:/drinks/store";
+			return "redirect:admin/drinks/store";
 		}
 		
 		//a quale view ritorna
@@ -127,7 +140,7 @@ public class DrinkController {
 	}
 	
 	//metodo per la delete
-	@GetMapping("/drink/delete/{id}")
+	@GetMapping("admin/drink/delete/{id}")
 	public String deleteDrink(@PathVariable("id") int id, Model model) {
 		// selezioniamo il record con quell'id
 		Optional<Drink> optDrink= drinkService.findDrinkById(id);

@@ -23,14 +23,16 @@
 				      <th scope="col">PROMOZIONE</th>
 				       <th scope="col">INGREDIENTI</th>
 				      <th scope="col">
-				      	<a class="btn btn-primary" th:href="@{/pizza/create}">Create Pizza</a>
+				      	<a class="btn btn-primary" th:href="@{/admin/pizza/create}">Create Pizza</a>
 				      </th>
 				    </tr>
 				  </thead>
 				  <tbody>
 				    <tr th:each=" pizza : ${allPizzas}" th:object="${pizza}" th:if="${allPizzas.size() > 0}">
 				      <th scope="row" th:text="*{id}"></th>
-				      <td th:text="*{name}"></td>
+				      <td >
+				      	<a th:href="@{user/pizza/{id} (id=*{id})}" th:text="*{name}"></a>
+				      </td>
 				      <td th:text="*{description}"></td>
 				      <td th:text="*{price}"></td>
 				      <td>
@@ -44,8 +46,8 @@
 				       	</div>
 				      </td>
 				      <td>
-				      	<a class="btn btn-primary" th:href="@{/pizza/edit/{id} (id=*{id})}">Edit</a>
-					  	<a class="btn btn-danger" th:href="@{/pizza/delete/{id} (id=*{id})}" >Delete</a>
+				      	<a class="btn btn-primary" th:href="@{/admin/pizza/edit/{id} (id=*{id})}">Edit</a>
+					  	<a class="btn btn-danger" th:href="@{/admin/pizza/delete/{id} (id=*{id})}" >Delete</a>
 					  </td>
 				    </tr>
 				  </tbody>

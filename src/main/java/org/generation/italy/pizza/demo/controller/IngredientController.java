@@ -44,7 +44,7 @@ public class IngredientController {
 	}
 	
 	//CREATE INGREDIENT
-	@GetMapping("/ingredient/create")
+	@GetMapping("admin/ingredient/create")
 	public String createIngredient(Model model) {
 		
 		Ingredient ingredient = new Ingredient();
@@ -55,7 +55,7 @@ public class IngredientController {
 		
 		return "ingredientCRUD/create";
 	}
-	@PostMapping("/ingredient/store")
+	@PostMapping("admin/ingredient/store")
 	public String storeIngredient(@Valid @ModelAttribute("ingredient") Ingredient ingredient,
 			//Intergaccia per la registrazione degli errori 
 			BindingResult bindingResult, 
@@ -70,7 +70,7 @@ public class IngredientController {
 			redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
 			
 			//ritorniamo al form con gli errori se i dati sono errati
-			return "/ingredient/create";
+			return "admin/ingredient/create";
 		
 		}
 		//metodo per otterere le pizze inserite
@@ -89,7 +89,7 @@ public class IngredientController {
 	}
 	
 	//UPDATE INGREDIENT
-		@GetMapping("/ingredient/edit/{id}")
+		@GetMapping("admin/ingredient/edit/{id}")
 		public String editIngredient(@PathVariable("id") int id, Model model) {
 			
 			// selezioniamo il record con quell'id
@@ -102,7 +102,7 @@ public class IngredientController {
 			
 			return "ingredientCRUD/update";
 		}
-		@PostMapping("/ingredient/update")
+		@PostMapping("admin/ingredient/update")
 		public String updateIngredient(@Valid @ModelAttribute("ingredient") Ingredient ingredient,
 				//Intergaccia per la registrazione degli errori 
 				BindingResult bindingResult, 
@@ -115,7 +115,7 @@ public class IngredientController {
 				//riportiamo gli errori all'interno della view indicata
 				redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());				
 				//ritorniamo al form con gli errori se i dati sono errati
-				return "/ingredient/update";			
+				return "admin/ingredient/update";			
 			}
 			//azzeriamo l'ingrediente prima di riassegnarlo 
 			//prendiamo l'id
@@ -141,7 +141,7 @@ public class IngredientController {
 		}
 		
 		//Indichiamo a quale path fa riferimento questo metodo
-				@GetMapping("/ingredient/delete/{id}")
+				@GetMapping("admin/ingredient/delete/{id}")
 				public String deleteIngredient(@PathVariable("id") int id) {
 					
 					// selezioniamo il record con quell'id

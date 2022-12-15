@@ -17,7 +17,7 @@
 				</div>
 			</div>
 			<!-- form per la compilazione dei record -->
-			<form class="container border mt-5 p-3" method="POST" action="/pizza/store" th:object="${pizza}"  >
+			<form class="container border mt-5 p-3" method="POST" th:action="@{/admin/pizza/store}" th:object="${pizza}"  >
 				<input type="text" name="id" th:field="*{id}" class="d-none" >
 				<div th:insert="frag :: form-crud"></div>
 			</form>

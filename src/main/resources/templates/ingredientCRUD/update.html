@@ -17,7 +17,7 @@
 				</div>
 			</div>
 			<!-- form per la compilazione dei record -->
-			<form class="container border mt-5 p-3" method="POST" action="/ingredient/update" th:object="${ingredient}"  >
+			<form class="container border mt-5 p-3" method="POST" action="admin/ingredient/update" th:object="${ingredient}"  >
 				<input type="text" name="id" th:field="*{id}" class="d-none" >
 				<div th:insert="frag :: form-crud-ingredient"></div>
 			</form>

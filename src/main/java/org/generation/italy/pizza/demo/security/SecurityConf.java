@@ -20,8 +20,8 @@ public class SecurityConf {
 		
 		http.authorizeHttpRequests()	
 				//indichiamo in base al path il role che potra accedere
-				.requestMatchers("/user", "/user/**").hasAuthority("USER")
-				.requestMatchers("/admin", "/admin/**").hasAuthority("ADMIN")
+				.requestMatchers("/user", "/user/**").hasAuthority("user")
+				.requestMatchers("/admin", "/admin/**").hasAuthority("admin")
 				.requestMatchers("/useradmin", "/useradmin/**").hasAnyAuthority("USER", "ADMIN")	
 				.requestMatchers("/**").permitAll()
 			.and().formLogin()
