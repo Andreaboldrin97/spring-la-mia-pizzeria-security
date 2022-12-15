@@ -61,7 +61,11 @@
 		    <artifactId>font-awesome</artifactId>
 		    <version>5.15.4</version>
 		</dependency>
-		
+		<!-- dependecy sicurezza -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

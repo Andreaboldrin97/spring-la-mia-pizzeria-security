@@ -8,10 +8,15 @@ import org.generation.italy.pizza.demo.pojo.Drink;
 import org.generation.italy.pizza.demo.pojo.Ingredient;
 import org.generation.italy.pizza.demo.pojo.Pizza;
 import org.generation.italy.pizza.demo.pojo.Promotion;
+import org.generation.italy.pizza.demo.pojo.Role;
+import org.generation.italy.pizza.demo.pojo.User;
+import org.generation.italy.pizza.demo.repo.RoleRepo;
 import org.generation.italy.pizza.demo.service.DrinkService;
 import org.generation.italy.pizza.demo.service.IngredientService;
 import org.generation.italy.pizza.demo.service.PizzaService;
 import org.generation.italy.pizza.demo.service.PromotionService;
+import org.generation.italy.pizza.demo.service.RoleService;
+import org.generation.italy.pizza.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -38,9 +43,29 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner{
 	@Autowired
 	private IngredientService ingredientService;
 	
+	@Autowired
+	private RoleService roleService;
+	
+	@Autowired
+	private UserService userService;
+	
 	//DATI FAKER
 	@Override
 	public void run(String... args) throws Exception {
+		
+		//role
+		Role user = new Role("user");
+		Role admin= new Role("admin");
+		
+		roleService.save(user);
+		roleService.save(admin);
+		
+		//user
+		User user1 = new User("user","{noop}user",user);
+		User admin1 = new User("admin","{noop}admin",admin);
+		
+		userService.save(user1);
+		userService.save(admin1);
 		
 		//promotions
 		Promotion prom1 = new  Promotion(LocalDate.parse("2022-12-13"), LocalDate.parse("2022-12-31"), "rebix promotion");
