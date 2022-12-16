@@ -20,7 +20,7 @@
 				      <th scope="col">NOME</th>
 				      <th scope="col">PIZZA NOME</th>
 				      <th scope="col">
-				      	<a class="btn btn-primary" th:href="@{admin/ingredient/create}">Create Ingredient</a>
+				      	<a class="btn btn-primary" th:href="@{admin/ingredient/create}" sec:authorize="hasAuthority('admin')">Create Ingredient</a>
 				      </th>
 				    </tr>
 				  </thead>
@@ -35,7 +35,7 @@
 				       		th:text="*{name}">
 				       		</div>
 				       </td>
-				      <td>
+				      <td sec:authorize="hasAuthority('admin')">
 				      	<a class="btn btn-primary" th:href="@{admin/ingredient/edit/{id} (id = *{id})}" >Edit</a>
 					  	<a class="btn btn-danger"th:href="@{admin/ingredient/delete/{id} (id = *{id})}">Delete</a>
 					  </td>

@@ -22,7 +22,7 @@
 				      <th scope="col">TITLE</th>
 				      <th scope="col">PIZZA NAME</th>
 				      <th scope="col">
-				      	<a class="btn btn-primary" th:href="@{admin/promotion/create}">Create Promotion</a>
+				      	<a class="btn btn-primary" th:href="@{admin/promotion/create}" sec:authorize="hasAuthority('admin')">Create Promotion</a>
 				      </th>
 				    </tr>
 				  </thead>
@@ -39,7 +39,7 @@
 				       		th:text="*{name}">
 				       		</div>
 				       </td>
-				      <td>
+				      <td sec:authorize="hasAuthority('admin')">
 				      	<a class="btn btn-primary" href="#">Edit</a>
 					  	<a class="btn btn-danger" href="#" >Delete</a>
 					  </td>

@@ -21,7 +21,7 @@
 				      <th scope="col">DESCRIPTION</th>
 				      <th scope="col">PRICE</th>
 				      <th scope="col">
-				      	<a class="btn btn-primary" th:href="@{admin/drink/create}">Create Drink</a>
+				      	<a class="btn btn-primary" th:href="@{admin/drink/create}" sec:authorize="hasAuthority('admin')">Create Drink</a>
 				      </th>
 				    </tr>
 				  </thead>
@@ -33,7 +33,7 @@
 				      </td>
 				      <td th:text="*{description}"></td>
 				      <td th:text="*{price}"></td>
-				      <td>
+				      <td sec:authorize="hasAuthority('admin')">
 				      	<a class="btn btn-primary" th:href="@{admin/drink/edit/{id} (id=*{id})}">Edit</a>
 					  	<a class="btn btn-danger" th:href="@{admin/drink/delete/{id} (id=*{id})}" >Delete</a>
 					  </td>

@@ -22,7 +22,7 @@
 				      <th scope="col">PRICE</th>
 				      <th scope="col">PROMOZIONE</th>
 				       <th scope="col">INGREDIENTI</th>
-				      <th scope="col">
+				      <th scope="col" sec:authorize="hasAuthority('admin')">
 				      	<a class="btn btn-primary" th:href="@{/admin/pizza/create}">Create Pizza</a>
 				      </th>
 				    </tr>
@@ -45,7 +45,7 @@
 				       		th:text="${pizza.ingredients}">
 				       	</div>
 				      </td>
-				      <td>
+				      <td sec:authorize="hasAuthority('admin')">
 				      	<a class="btn btn-primary" th:href="@{/admin/pizza/edit/{id} (id=*{id})}">Edit</a>
 					  	<a class="btn btn-danger" th:href="@{/admin/pizza/delete/{id} (id=*{id})}" >Delete</a>
 					  </td>
