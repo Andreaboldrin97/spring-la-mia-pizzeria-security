@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.thymeleaf.extras.springsecurity6.dialect.SpringSecurityDialect;
 
 //indichiamo questa classe come coonfiguaratore di rotte
 @Configuration
@@ -51,6 +52,12 @@ public class SecurityConf {
 		provider.setPasswordEncoder(getPasswordEncoder());
 		
 		return provider;
+	}
+	
+	// Bean per Integrazione con Thymeleaf
+	@Bean
+	public SpringSecurityDialect securityDialect() {
+		return new SpringSecurityDialect();
 	}
 
 }

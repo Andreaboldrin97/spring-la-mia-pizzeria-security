@@ -50,6 +50,14 @@
 			   		<a class="btn btn-danger" th:href="@{/logout}">Logout</a>
 			   </div>
 			  </div>
+			  <div sec:authorize="isAuthenticated()" class="d-flex">
+			  	 <div class="text-white">
+				  	Logged: <span sec:authentication="name"></span>
+				  </div>
+				  <div class="text-white">
+					Roles: <span sec:authentication="principal.authorities"></span>
+				  </div>
+			  </div>
 			</nav>
 		</header>
 		
